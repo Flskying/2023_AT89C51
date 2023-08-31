@@ -1,0 +1,42 @@
+C51 COMPILER V9.59.0.0   ____                                                              08/30/2023 23:07:13 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ____
+OBJECT MODULE PLACED IN …¡À∏.OBJ
+COMPILER INVOKED BY: D:\»Ìº˛\DEVELOP\Keil uvision5 C51v959(64bit)\C51\BIN\C51.EXE …¡À∏.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define uchar unsigned char
+   3          void delay()
+   4          {
+   5   1      uchar i,j;
+   6   1      for(i=0;i<255;i++)
+   7   1              for(j=0;j<255;j++);
+   8   1              }
+   9          
+  10          void main ()
+  11          {
+  12   1              while(1)
+  13   1              {
+  14   2              P1=0;
+  15   2              delay();
+  16   2              P1=1;
+  17   2              delay();
+  18   2              }
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     45    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

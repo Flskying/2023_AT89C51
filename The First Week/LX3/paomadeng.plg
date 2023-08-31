@@ -1,0 +1,254 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\leidian\Desktop\LX3\paomadeng.uvproj
+Project File Date:  08/31/2023
+
+<h2>Output:</h2>
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(6): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(6): error C202: 'i': undefined identifier
+paomadeng.c(6): error C202: 'i': undefined identifier
+paomadeng.c(6): error C202: 'i': undefined identifier
+paomadeng.c(6): error C141: syntax error near ')', expected ';'
+paomadeng.c(14): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near ')', expected ';'
+paomadeng.c(20): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(20): error C202: 'i': undefined identifier
+paomadeng.c(20): error C202: 'i': undefined identifier
+paomadeng.c(20): error C202: 'i': undefined identifier
+paomadeng.c(20): error C141: syntax error near ')', expected ';'
+目标未创建
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(6): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(6): error C202: 'i': undefined identifier
+paomadeng.c(6): error C202: 'i': undefined identifier
+paomadeng.c(6): error C202: 'i': undefined identifier
+paomadeng.c(6): error C141: syntax error near ')', expected ';'
+paomadeng.c(15): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(15): error C141: syntax error near ')', expected ';'
+paomadeng.c(21): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(21): error C141: syntax error near ')', expected ';'
+目标未创建
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(7): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(7): error C141: syntax error near ')', expected ';'
+paomadeng.c(16): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(16): error C141: syntax error near ')', expected ';'
+paomadeng.c(22): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(22): error C141: syntax error near ')', expected ';'
+目标未创建
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(13): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(13): error C202: 'i': undefined identifier
+paomadeng.c(13): error C202: 'i': undefined identifier
+paomadeng.c(13): error C202: 'i': undefined identifier
+paomadeng.c(13): error C141: syntax error near ')', expected ';'
+paomadeng.c(18): error C141: syntax error near '', expected '__asm'
+目标未创建
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(13): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(13): error C202: 'i': undefined identifier
+paomadeng.c(13): error C202: 'i': undefined identifier
+paomadeng.c(13): error C202: 'i': undefined identifier
+paomadeng.c(13): error C141: syntax error near ')', expected ';'
+paomadeng.c(18): error C141: syntax error near '', expected '__asm'
+目标未创建
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(12): error C202: 'ucahr': undefined identifier
+paomadeng.c(12): error C141: syntax error near 'i', expected ';'
+paomadeng.c(14): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near ')', expected ';'
+paomadeng.c(19): error C141: syntax error near '', expected '__asm'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C202: 'ucahr': undefined identifier
+paomadeng.c(12): error C141: syntax error near 'i', expected ';'
+paomadeng.c(14): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near ')', expected ';'
+paomadeng.c(19): error C141: syntax error near '', expected '__asm'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C202: 'ucahr': undefined identifier
+paomadeng.c(12): error C141: syntax error near 'i', expected ';'
+paomadeng.c(14): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near ')', expected ';'
+目标未创建
+Build target '目标 1'
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near ')', expected ';'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(14): error C141: syntax error near 'int', expected 'sizeof'
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(14): error C141: syntax error near ')', expected ';'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(16): error C202: 'i': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(16): error C202: 'i': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'i': undefined identifier
+paomadeng.c(14): error C202: 'i': undefined identifier
+paomadeng.c(16): error C202: 'i': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'unsigned', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'int', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'int', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'int', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'int', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+paomadeng.c(12): error C141: syntax error near 'int', expected '__asm'
+paomadeng.c(12): error C202: 'm': undefined identifier
+paomadeng.c(14): error C202: 'm': undefined identifier
+paomadeng.c(16): error C202: 'm': undefined identifier
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling paomadeng.c...
+linking...
+Program Size: data=9.0 xdata=0 code=84
+creating hex file from "paomadeng"...
+"paomadeng" - 0 Error(s), 0 Warning(s).
