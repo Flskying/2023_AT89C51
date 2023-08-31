@@ -1,0 +1,86 @@
+#include <reg51.h>
+#define uchar unsigned char
+void delay()
+{
+uchar i,j;
+
+for(i=0;i<255;i++);
+	for(j=0;j<255;j++);
+}
+void main ()
+{	uchar m=0;
+	while(1)
+	{
+	for(m=1.0;m<1.7;m=m+0.1)
+	{
+	m=0;
+	delay();
+	m=1;
+	delay();
+	}
+}
+}
+
+
+
+
+
+
+
+
+
+
+#include <reg51.h>
+#define uchar unsigned char
+void delay()
+{
+uchar i,j;
+
+for(i=0;i<255;i++);
+	for(j=0;j<255;j++);
+}
+void main ()
+{	uchar m=0;
+	while(1)
+	{
+	P1.0=0;
+	delay();
+	P1.0=1;
+	delay();
+
+	P1.1=0;
+	delay();
+	P1.1=1;
+	delay();
+
+	P1.2=0;
+	delay();
+	P1.2=1;
+	delay();
+
+	P1.3=0;
+	delay();
+	P1.3=1;
+	delay();
+
+	P1.4=0;
+	delay();
+	P1.4=1;
+	delay();
+
+	P1.5=0;
+	delay();
+	P1.5=1;
+	delay();
+
+	P1.6=0;
+	delay();
+	P1.6=1;
+	delay();
+
+	P1.7=0;
+	delay();
+	P1.7=1;
+	delay();
+	}
+}
