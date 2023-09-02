@@ -1,0 +1,114 @@
+C51 COMPILER V9.59.0.0   ______                                                            09/02/2023 12:40:50 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ______
+OBJECT MODULE PLACED IN °Ë¸öµÆ.OBJ
+COMPILER INVOKED BY: D:\Èí¼þ\DEVELOP\Keil uvision5 C51v959(64bit)\C51\BIN\C51.EXE °Ë¸öµÆ.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define uchar unsigned char
+   3          sbit P20 = P2^0 ;
+   4          sbit P21 = P2^1 ;
+   5          sbit P22 = P2^2 ;
+   6          sbit P23 = P2^3 ;
+   7          void delay()
+   8          {
+   9   1      uchar i,j;
+  10   1      for(i=0;i<100;i++)
+  11   1              for(j=0;j<150;j++);
+  12   1              }
+  13          
+  14          void main ()
+  15          {       
+  16   1              if (P20==0)
+  17   1              {
+  18   2                      int m,i=1;
+  19   2                      P1 = 0xff;
+  20   2                      while(i) 
+  21   2                      {
+  22   3                              for(m = 0; m < 8; m++) 
+  23   3                              {
+  24   4                              P1 = ~(1 << m); 
+  25   4                              delay();
+  26   4                                      if(P20==1)
+  27   4                                              {
+  28   5                                                      P1=0xff;
+  29   5                                                      i=0;
+  30   5                                                      break;
+  31   5                                              }
+  32   4                              }
+  33   3                      }
+  34   2              }
+  35   1      
+  36   1              if (P21==0)
+  37   1              {
+  38   2                      int m,i=1;
+  39   2                      P1 = 0xff;
+  40   2                      while(i) 
+  41   2                      {
+  42   3                              for(m = 7; m >=0; m--) 
+  43   3                              {
+  44   4                              P1 = ~(1 << m); 
+  45   4                              delay();
+  46   4                                      if(P21==1)
+  47   4                                              {
+  48   5                                                      P1=0xff;
+  49   5                                                      i=0;
+  50   5                                                      break;
+  51   5                                              }
+  52   4                              }
+  53   3                      }
+  54   2              }
+  55   1              
+C51 COMPILER V9.59.0.0   ______                                                            09/02/2023 12:40:50 PAGE 2   
+
+  56   1              if (P22==0)
+  57   1              {       int i=1;
+  58   2                      while(i)
+  59   2                      {
+  60   3                              P1=0x00;
+  61   3                              delay();
+  62   3                              P1=0xff;
+  63   3                              delay();
+  64   3                              if(P22==1)
+  65   3                              {
+  66   4                                      P1=0xff;
+  67   4                                      i=0;
+  68   4                                      
+  69   4                              }
+  70   3                      }
+  71   2              }
+  72   1      
+  73   1              if (P23==0)
+  74   1              {       int i=1;
+  75   2                      while(i)
+  76   2                      {
+  77   3                              P1=0xf0;
+  78   3                              delay();
+  79   3                              P1=0x0f;
+  80   3                              delay();
+  81   3                              if(P23==1)
+  82   3                              {
+  83   4                                      P1=0xff;
+  84   4                                      i=0;
+  85   4                                      
+  86   4                              }
+  87   3                      }
+  88   2              }
+  89   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    265    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
