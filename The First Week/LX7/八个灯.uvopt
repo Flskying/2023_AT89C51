@@ -186,10 +186,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>52</ColumnNumber>
+      <ColumnNumber>28</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>21</CurrentLine>
+      <CurrentLine>27</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\八个灯.c</PathWithFileName>
       <FilenameWithoutPath>八个灯.c</FilenameWithoutPath>
@@ -1541,9 +1541,9 @@
       <Documents>
         <Doc>
           <Name>.\八个灯.c</Name>
-          <ColumnNumber>52</ColumnNumber>
+          <ColumnNumber>28</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>21</CurrentLine>
+          <CurrentLine>27</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

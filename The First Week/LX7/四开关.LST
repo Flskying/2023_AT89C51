@@ -1,0 +1,72 @@
+C51 COMPILER V9.59.0.0   ______                                                            09/06/2023 09:55:35 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ______
+OBJECT MODULE PLACED IN 四开关.OBJ
+COMPILER INVOKED BY: D:\软件\DEVELOP\Keil uvision5 C51v959(64bit)\C51\BIN\C51.EXE 四开关.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define uchar unsigned char
+   3          sbit P20 = P2^0 ;
+   4          sbit P21 = P2^1 ;
+   5          sbit P22 = P2^2 ;
+   6          sbit P23 = P2^3 ;
+   7          
+   8          void delay() 
+   9          {
+  10   1      uchar i,j;
+  11   1      for(i=0;i<100;i++)
+  12   1              for(j=0;j<150;j++);
+  13   1      }
+  14          
+  15          void main ()
+  16          {
+  17   1              uchar  m,n   ;
+  18   1              while (1)
+  19   1              {
+  20   2                      
+  21   2      
+  22   2                      P1=0xff;
+  23   2              
+  24   2                      if(P21==0) 
+  25   2                      {
+  26   3                      for(n = 7; n >= 0 && P21 == 0; n--) 
+  27   3                              {
+  28   4                              P1 = ~(1 << n); 
+  29   4                              delay();
+  30   4                              }
+  31   3                      }
+  32   2      
+  33   2                      
+  34   2      
+  35   2                      if(P20==0) 
+  36   2                      {
+  37   3                              for(m=0;m<8&&P20==0;m++)
+  38   3                              {
+  39   4                                      P1= ~ ( 1 << m );
+  40   4                                      delay();
+  41   4                              }
+  42   3                      }
+  43   2      
+  44   2      
+  45   2               }
+  46   1      }
+  47          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    107    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.59.0.0   ______                                                            09/06/2023 09:55:35 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
