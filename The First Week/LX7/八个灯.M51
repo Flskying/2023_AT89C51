@@ -1,8 +1,8 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/02/2023  12:40:50  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/15/2023  10:18:44  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-D:\Èí¼þ\DEVELOP\KEIL UVISION5 C51V959(64BIT)\C51\BIN\BL51.EXE STARTUP.obj, °Ë¸öµÆ.obj TO °Ë¸öµÆ
+D:\Èí¼þ\DEVELOP\DANPIANJI\KEIL\C51\BIN\BL51.EXE STARTUP.obj, new_2.obj TO °Ë¸öµÆ
 
 
 MEMORY MODEL: SMALL
@@ -10,7 +10,10 @@ MEMORY MODEL: SMALL
 
 INPUT MODULES INCLUDED:
   STARTUP.obj (?C_STARTUP)
-  °Ë¸öµÆ.obj (______)
+  new_2.obj (NEW_2)
+  D:\Èí¼þ\DEVELOP\DANPIANJI\KEIL\C51\LIB\C51S.LIB (?C?SIDIV)
+  D:\Èí¼þ\DEVELOP\DANPIANJI\KEIL\C51\LIB\C51S.LIB (RAND)
+  D:\Èí¼þ\DEVELOP\DANPIANJI\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
 
 
 LINK MAP OF MODULE:  °Ë¸öµÆ (?C_STARTUP)
@@ -21,14 +24,17 @@ LINK MAP OF MODULE:  °Ë¸öµÆ (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0004H     UNIT         _DATA_GROUP_
-            IDATA   000CH     0001H     UNIT         ?STACK
+            DATA    0008H     0004H     UNIT         ?DT?RAND?RAND
+            DATA    000CH     0004H     UNIT         _DATA_GROUP_
+            IDATA   0010H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     00EAH     UNIT         ?PR?MAIN?______
-            CODE    00EDH     001FH     UNIT         ?PR?DELAY?______
-            CODE    010CH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0003H     00F6H     UNIT         ?PR?MAIN?NEW_2
+            CODE    00F9H     008BH     UNIT         ?C?LIB_CODE
+            CODE    0184H     004DH     UNIT         ?PR?RAND?RAND
+            CODE    01D1H     001FH     UNIT         ?PR?DELAY?NEW_2
+            CODE    01F0H     000CH     UNIT         ?C_C51STARTUP
 
 
 
@@ -39,10 +45,11 @@ SEGMENT                          DATA_GROUP
   +--> CALLED SEGMENT          START    LENGTH
 ----------------------------------------------
 ?C_C51STARTUP                  -----    -----
-  +--> ?PR?MAIN?______
+  +--> ?PR?MAIN?NEW_2
 
-?PR?MAIN?______                0008H    0004H
-  +--> ?PR?DELAY?______
+?PR?MAIN?NEW_2                 000CH    0004H
+  +--> ?PR?DELAY?NEW_2
+  +--> ?PR?RAND?RAND
 
 
 
@@ -52,20 +59,20 @@ SYMBOL TABLE OF MODULE:  °Ë¸öµÆ (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:010CH         SEGMENT       ?C_C51STARTUP
-  I:000CH         SEGMENT       ?STACK
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/15/2023  10:18:44  PAGE 2
+
+
+  C:01F0H         SEGMENT       ?C_C51STARTUP
+  I:0010H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/02/2023  12:40:50  PAGE 2
-
-
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:010FH         SYMBOL        IDATALOOP
+  C:01F3H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -74,25 +81,25 @@ SYMBOL TABLE OF MODULE:  °Ë¸öµÆ (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:010CH         SYMBOL        STARTUP1
+  C:01F0H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:010CH         LINE#         133
-  C:010EH         LINE#         134
-  C:010FH         LINE#         135
-  C:0110H         LINE#         136
-  C:0112H         LINE#         185
-  C:0115H         LINE#         196
+  C:01F0H         LINE#         133
+  C:01F2H         LINE#         134
+  C:01F3H         LINE#         135
+  C:01F4H         LINE#         136
+  C:01F6H         LINE#         185
+  C:01F9H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
-  -------         MODULE        ______
+  -------         MODULE        NEW_2
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-  C:00EDH         PUBLIC        delay
+  C:01D1H         PUBLIC        delay
   C:0003H         PUBLIC        main
   B:00A0H.0       PUBLIC        P20
   B:00A0H.1       PUBLIC        P21
@@ -103,113 +110,127 @@ SYMBOL TABLE OF MODULE:  °Ë¸öµÆ (?C_STARTUP)
   D:0007H         SYMBOL        i
   D:0006H         SYMBOL        j
   -------         ENDDO         
-  C:00EDH         LINE#         7
-  C:00EDH         LINE#         8
-  C:00EDH         LINE#         10
-  C:00F9H         LINE#         11
-  C:010BH         LINE#         12
+  C:01D1H         LINE#         8
+  C:01D1H         LINE#         9
+  C:01D1H         LINE#         11
+  C:01DDH         LINE#         12
+  C:01EFH         LINE#         13
   -------         ENDPROC       DELAY
   -------         PROC          MAIN
   -------         DO            
-  D:0008H         SYMBOL        m
-  D:000AH         SYMBOL        i
-  D:0008H         SYMBOL        m
-  D:000AH         SYMBOL        i
-  D:0008H         SYMBOL        i
-  D:0008H         SYMBOL        i
-  -------         ENDDO         
-  -------         DO            
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/02/2023  12:40:50  PAGE 3
+  D:000CH         SYMBOL        m
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/15/2023  10:18:44  PAGE 3
 
 
-  D:0008H         SYMBOL        m
-  D:000AH         SYMBOL        i
-  D:0008H         SYMBOL        i
-  D:0008H         SYMBOL        i
+  D:000EH         SYMBOL        i
+  D:000CH         SYMBOL        m
+  D:000EH         SYMBOL        i
   -------         ENDDO         
   -------         DO            
-  D:0008H         SYMBOL        i
-  D:0008H         SYMBOL        i
+  D:000CH         SYMBOL        m
+  D:000EH         SYMBOL        i
   -------         ENDDO         
   -------         DO            
-  D:0008H         SYMBOL        i
+  D:000CH         SYMBOL        i
+  -------         DO            
+  D:000EH         SYMBOL        pattern
   -------         ENDDO         
-  C:0003H         LINE#         14
+  -------         ENDDO         
+  -------         DO            
+  D:000CH         SYMBOL        i
+  -------         ENDDO         
   C:0003H         LINE#         15
   C:0003H         LINE#         16
-  C:0006H         LINE#         17
+  C:0003H         LINE#         17
   C:0006H         LINE#         18
-  C:000CH         LINE#         19
-  C:000FH         LINE#         20
-  C:0015H         LINE#         21
+  C:0006H         LINE#         19
+  C:000CH         LINE#         20
+  C:000FH         LINE#         21
   C:0015H         LINE#         22
-  C:0027H         LINE#         23
+  C:0015H         LINE#         23
   C:0027H         LINE#         24
-  C:0037H         LINE#         25
-  C:003AH         LINE#         26
-  C:003DH         LINE#         27
+  C:0027H         LINE#         25
+  C:0037H         LINE#         26
+  C:003AH         LINE#         27
   C:003DH         LINE#         28
-  C:0040H         LINE#         29
-  C:0045H         LINE#         30
-  C:0047H         LINE#         31
+  C:003DH         LINE#         29
+  C:0040H         LINE#         30
+  C:0045H         LINE#         31
   C:0047H         LINE#         32
-  C:0051H         LINE#         33
+  C:0047H         LINE#         33
   C:0051H         LINE#         34
-  C:0051H         LINE#         36
-  C:0054H         LINE#         37
+  C:0051H         LINE#         35
+  C:0051H         LINE#         37
   C:0054H         LINE#         38
-  C:005AH         LINE#         39
-  C:005DH         LINE#         40
-  C:0063H         LINE#         41
+  C:0054H         LINE#         39
+  C:005AH         LINE#         40
+  C:005DH         LINE#         41
   C:0063H         LINE#         42
-  C:0072H         LINE#         43
+  C:0063H         LINE#         43
   C:0072H         LINE#         44
-  C:0082H         LINE#         45
-  C:0085H         LINE#         46
-  C:0088H         LINE#         47
+  C:0072H         LINE#         45
+  C:0082H         LINE#         46
+  C:0085H         LINE#         47
   C:0088H         LINE#         48
-  C:008BH         LINE#         49
-  C:0090H         LINE#         50
-  C:0092H         LINE#         51
+  C:0088H         LINE#         49
+  C:008BH         LINE#         50
+  C:0090H         LINE#         51
   C:0092H         LINE#         52
-  C:009CH         LINE#         53
+  C:0092H         LINE#         53
   C:009CH         LINE#         54
-  C:009CH         LINE#         56
-  C:009FH         LINE#         57
-  C:00A5H         LINE#         58
-  C:00ABH         LINE#         59
-  C:00ABH         LINE#         60
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/02/2023  12:40:50  PAGE 4
+  C:009CH         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/15/2023  10:18:44  PAGE 4
 
 
-  C:00AEH         LINE#         61
-  C:00B1H         LINE#         62
-  C:00B4H         LINE#         63
-  C:00B7H         LINE#         64
-  C:00BAH         LINE#         65
-  C:00BAH         LINE#         66
-  C:00BDH         LINE#         67
-  C:00C2H         LINE#         69
-  C:00C2H         LINE#         70
-  C:00C4H         LINE#         71
-  C:00C4H         LINE#         73
-  C:00C7H         LINE#         74
-  C:00CDH         LINE#         75
-  C:00D3H         LINE#         76
-  C:00D3H         LINE#         77
-  C:00D6H         LINE#         78
-  C:00D9H         LINE#         79
-  C:00DCH         LINE#         80
-  C:00DFH         LINE#         81
-  C:00E2H         LINE#         82
-  C:00E2H         LINE#         83
-  C:00E5H         LINE#         84
-  C:00EAH         LINE#         86
-  C:00EAH         LINE#         87
-  C:00ECH         LINE#         88
-  C:00ECH         LINE#         89
+  C:009CH         LINE#         57
+  C:009FH         LINE#         58
+  C:009FH         LINE#         59
+  C:00A2H         LINE#         60
+  C:00A8H         LINE#         61
+  C:00AEH         LINE#         62
+  C:00BAH         LINE#         63
+  C:00BDH         LINE#         64
+  C:00C0H         LINE#         65
+  C:00C3H         LINE#         66
+  C:00C6H         LINE#         67
+  C:00CBH         LINE#         68
+  C:00CBH         LINE#         69
+  C:00CDH         LINE#         70
+  C:00CDH         LINE#         71
+  C:00D0H         LINE#         72
+  C:00D0H         LINE#         73
+  C:00D0H         LINE#         96
+  C:00D3H         LINE#         97
+  C:00D9H         LINE#         98
+  C:00DFH         LINE#         99
+  C:00DFH         LINE#         100
+  C:00E2H         LINE#         101
+  C:00E5H         LINE#         102
+  C:00E8H         LINE#         103
+  C:00EBH         LINE#         104
+  C:00EEH         LINE#         105
+  C:00EEH         LINE#         106
+  C:00F1H         LINE#         107
+  C:00F6H         LINE#         109
+  C:00F6H         LINE#         110
+  C:00F8H         LINE#         111
+  C:00F8H         LINE#         112
   -------         ENDPROC       MAIN
-  -------         ENDMOD        ______
+  -------         ENDMOD        NEW_2
 
-Program Size: data=13.0 xdata=0 code=280
+  -------         MODULE        ?C?SIDIV
+  C:00F9H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        RAND
+  D:0008H         PUBLIC        ?SRAND?BYTE
+  C:0184H         PUBLIC        RAND
+  C:01C6H         PUBLIC        _SRAND
+  -------         ENDMOD        RAND
+
+  -------         MODULE        ?C?UIDIV
+  C:012FH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=17.0 xdata=0 code=508
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

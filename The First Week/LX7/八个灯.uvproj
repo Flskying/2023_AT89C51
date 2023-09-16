@@ -213,7 +213,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0xffff</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -352,9 +352,9 @@
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
             <File>
-              <FileName>八个灯.c</FileName>
+              <FileName>new_2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\八个灯.c</FilePath>
+              <FilePath>..\new_2.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -186,13 +186,13 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>8</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>89</TopLine>
-      <CurrentLine>89</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\new_2.c</PathWithFileName>
-      <FilenameWithoutPath>new_2.c</FilenameWithoutPath>
+      <PathWithFileName>.\new.c</PathWithFileName>
+      <FilenameWithoutPath>new.c</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -1540,10 +1540,10 @@
       <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
-          <Name>..\new_2.c</Name>
-          <ColumnNumber>8</ColumnNumber>
-          <TopLine>89</TopLine>
-          <CurrentLine>89</CurrentLine>
+          <Name>.\new.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

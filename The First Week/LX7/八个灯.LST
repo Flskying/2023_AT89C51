@@ -1,9 +1,9 @@
-C51 COMPILER V9.59.0.0   ______                                                            09/02/2023 12:40:50 PAGE 1   
+C51 COMPILER V9.59.0.0   ______                                                            09/14/2023 21:10:31 PAGE 1   
 
 
 C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ______
 OBJECT MODULE PLACED IN °Ë¸öµÆ.OBJ
-COMPILER INVOKED BY: D:\Èí¼þ\DEVELOP\Keil uvision5 C51v959(64bit)\C51\BIN\C51.EXE °Ë¸öµÆ.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Èí¼þ\DEVELOP\danpianji\keil\C51\BIN\C51.EXE °Ë¸öµÆ.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   53   3                      }
   54   2              }
   55   1              
-C51 COMPILER V9.59.0.0   ______                                                            09/02/2023 12:40:50 PAGE 2   
+C51 COMPILER V9.59.0.0   ______                                                            09/14/2023 21:10:31 PAGE 2   
 
   56   1              if (P22==0)
   57   1              {       int i=1;

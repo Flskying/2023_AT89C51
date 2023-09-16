@@ -1,9 +1,9 @@
-C51 COMPILER V9.59.0.0   ______                                                            09/06/2023 09:55:35 PAGE 1   
+C51 COMPILER V9.59.0.0   ______                                                            09/14/2023 21:46:27 PAGE 1   
 
 
 C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ______
 OBJECT MODULE PLACED IN 四开关.OBJ
-COMPILER INVOKED BY: D:\软件\DEVELOP\Keil uvision5 C51v959(64bit)\C51\BIN\C51.EXE 四开关.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\软件\DEVELOP\danpianji\keil\C51\BIN\C51.EXE 四开关.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -13,60 +13,82 @@ line level    source
    4          sbit P21 = P2^1 ;
    5          sbit P22 = P2^2 ;
    6          sbit P23 = P2^3 ;
-   7          
-   8          void delay() 
-   9          {
-  10   1      uchar i,j;
-  11   1      for(i=0;i<100;i++)
-  12   1              for(j=0;j<150;j++);
-  13   1      }
-  14          
-  15          void main ()
-  16          {
-  17   1              uchar  m,n   ;
-  18   1              while (1)
-  19   1              {
-  20   2                      
-  21   2      
-  22   2                      P1=0xff;
-  23   2              
-  24   2                      if(P21==0) 
-  25   2                      {
-  26   3                      for(n = 7; n >= 0 && P21 == 0; n--) 
-  27   3                              {
-  28   4                              P1 = ~(1 << n); 
-  29   4                              delay();
-  30   4                              }
-  31   3                      }
-  32   2      
-  33   2                      
-  34   2      
-  35   2                      if(P20==0) 
-  36   2                      {
-  37   3                              for(m=0;m<8&&P20==0;m++)
-  38   3                              {
-  39   4                                      P1= ~ ( 1 << m );
-  40   4                                      delay();
-  41   4                              }
-  42   3                      }
-  43   2      
-  44   2      
-  45   2               }
-  46   1      }
-  47          
+   7          uchar seg[]={0xa4,0xc0,0xc0,0xa4,0xf9,0xc0,0xa4,0xa4};
+   8          
+   9          void delay() 
+  10          {
+  11   1      uchar i,j;
+  12   1      for(i=0;i<100;i++)
+  13   1              for(j=0;j<150;j++);
+  14   1      }
+  15          
+  16          void main ()
+  17          {
+  18   1              uchar  m,n   ;
+  19   1              while (1)
+  20   1              {
+  21   2                      
+  22   2                       //正向 
+  23   2                      if(P21==0) 
+  24   2                      {
+  25   3                      for(n = 7; n >= 0 && P21 == 0; n--) 
+  26   3                              {
+  27   4                              P1 = ~(1 << n); 
+  28   4                              delay();
+  29   4                              }
+  30   3                      }
+  31   2      
+  32   2                      //反向
+  33   2      
+  34   2      if (P21==0)
+  35   2              {
+  36   3                      int m,i=1;
+  37   3                      P1 = 0xff;
+  38   3                      while(i) 
+  39   3                      {
+  40   4                              for(m = 7; m >=0&&P21==0; m--) 
+  41   4                              {
+  42   5                              P1 = ~(1 << m); 
+  43   5                              delay();
+  44   5                                      if(P21==1)
+  45   5                                              {
+  46   6                                                      P1=0xff;
+  47   6                                                      i=0;
+  48   6                                                      break;
+  49   6                                              }
+  50   5                              }
+  51   4                      }
+  52   3              }
+  53   2                 //
+  54   2                 
+  55   2                          if (P22 == 0) 
+C51 COMPILER V9.59.0.0   ______                                                            09/14/2023 21:46:27 PAGE 2   
+
+  56   2                              {
+  57   3                                      for(n = 7; n >= 0 && P22 == 0; n--) 
+  58   3                              {
+  59   4                              P1 =seg[n]; 
+  60   4                              delay();
+  61   4                              }
+  62   3              }
+  63   2      
+  64   2      
+  65   2      
+  66   2               }
+  67   1      }
+*** WARNING C280 IN LINE 18 OF 四开关.c: 'm': unreferenced local variable
+  68          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    107    ----
+   CODE SIZE        =    172    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
-C51 COMPILER V9.59.0.0   ______                                                            09/06/2023 09:55:35 PAGE 2   
-
+   DATA SIZE        =      8       5
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

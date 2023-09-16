@@ -1,0 +1,139 @@
+C51 COMPILER V9.59.0.0   NEW_2                                                             09/15/2023 10:18:44 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE NEW_2
+OBJECT MODULE PLACED IN new_2.OBJ
+COMPILER INVOKED BY: D:\软件\DEVELOP\danpianji\keil\C51\BIN\C51.EXE new_2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <stdlib.h>
+   3          #define uchar unsigned char
+   4          sbit P20 = P2^0 ;
+   5          sbit P21 = P2^1 ;
+   6          sbit P22 = P2^2 ;
+   7          sbit P23 = P2^3 ;
+   8          void delay()
+   9          {
+  10   1      uchar i,j;
+  11   1      for(i=0;i<100;i++)
+  12   1              for(j=0;j<150;j++);
+  13   1              }
+  14          
+  15          void main ()
+  16          {       
+  17   1              if (P20==0)
+  18   1              {
+  19   2                      int m,i=1;
+  20   2                      P1 = 0xff;
+  21   2                      while(i) 
+  22   2                      {
+  23   3                              for(m = 0; m < 8; m++) 
+  24   3                              {
+  25   4                              P1 = ~(1 << m); 
+  26   4                              delay();
+  27   4                                      if(P20==1)
+  28   4                                              {
+  29   5                                                      P1=0xff;
+  30   5                                                      i=0;
+  31   5                                                      break;
+  32   5                                              }
+  33   4                              }
+  34   3                      }
+  35   2              }
+  36   1      
+  37   1              if (P21==0)
+  38   1              {
+  39   2                      int m,i=1;
+  40   2                      P1 = 0xff;
+  41   2                      while(i) 
+  42   2                      {
+  43   3                              for(m = 7; m >=0; m--) 
+  44   3                              {
+  45   4                              P1 = ~(1 << m); 
+  46   4                              delay();
+  47   4                                      if(P21==1)
+  48   4                                              {
+  49   5                                                      P1=0xff;
+  50   5                                                      i=0;
+  51   5                                                      break;
+  52   5                                              }
+  53   4                              }
+  54   3                      }
+  55   2              }
+C51 COMPILER V9.59.0.0   NEW_2                                                             09/15/2023 10:18:44 PAGE 2   
+
+  56   1      
+  57   1              if (P22==0)
+  58   1               {
+  59   2                if (P22 == 0) { // 如果P2.2为低电平
+  60   3                  int i = 1;
+  61   3                  while (i) {
+  62   4                     uchar pattern = rand() % 256; // 生成一个随机数
+  63   4                      P1 = pattern; // 设置P1端口的LED灯状态
+  64   4                      delay();
+  65   4                      if (P22 == 1) { // 如果P2.3变成高电平
+  66   5                          P1 = 0xFF; // 关闭所有LED
+  67   5                          i = 0;
+  68   5                      }
+  69   4                  }
+  70   3              } else {
+  71   3                  P1 = 0xFF; // 如果P2.3为高电平，关闭所有LED
+  72   3              }
+  73   2                }
+  74   1      
+  75   1      
+  76   1      
+  77   1               //全闪
+  78   1              
+  79   1      //      if (P22==0)
+  80   1      //      {       int i=1;
+  81   1      //              while(i)
+  82   1      //              {
+  83   1      //                      P1=0x00;
+  84   1      //                      delay();
+  85   1      //                      P1=0xff;
+  86   1      //                      delay();
+  87   1      //                      if(P22==1)
+  88   1      //                      {
+  89   1      //                              P1=0xff;
+  90   1      //                              i=0;
+  91   1      //                              
+  92   1      //                      }
+  93   1      //              }
+  94   1      //      }
+  95   1      
+  96   1              if (P23==0)
+  97   1              {       int i=1;
+  98   2                      while(i)
+  99   2                      {
+ 100   3                              P1=0xf0;
+ 101   3                              delay();
+ 102   3                              P1=0x0f;
+ 103   3                              delay();
+ 104   3                              if(P23==1)
+ 105   3                              {
+ 106   4                                      P1=0xff;
+ 107   4                                      i=0;
+ 108   4                                      
+ 109   4                              }
+ 110   3                      }
+ 111   2              }
+ 112   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    277    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.59.0.0   NEW_2                                                             09/15/2023 10:18:44 PAGE 3   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

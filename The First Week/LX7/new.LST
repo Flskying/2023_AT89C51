@@ -1,0 +1,111 @@
+C51 COMPILER V9.59.0.0   NEW                                                               09/14/2023 21:14:04 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE NEW
+OBJECT MODULE PLACED IN new.OBJ
+COMPILER INVOKED BY: D:\软件\DEVELOP\danpianji\keil\C51\BIN\C51.EXE new.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <stdio.h>
+   3          #include <stdlib.h>
+   4          
+   5          // 定义LED端口
+   6          sbit LED1 = P1^0;
+   7          sbit LED2 = P1^1;
+   8          sbit LED3 = P1^2;
+   9          sbit LED4 = P1^3;
+  10          sbit LED5 = P1^4;
+  11          sbit LED6 = P1^5;
+  12          sbit LED7 = P1^6;
+  13          sbit LED8 = P1^7;
+  14          
+  15          // 定义开关端口
+  16          sbit SW1 = P2^0;
+  17          sbit SW2 = P2^1;
+  18          sbit SW3 = P2^2;
+  19          sbit SW4 = P2^3;
+  20          
+  21          // 函数声明
+  22          void delay(unsigned int time);
+  23          void displayConstant();
+  24          void displaySequence();
+  25          void displayBlink();
+  26          void displayRandom();
+  27          
+  28          void main() {
+  29   1          P1 = 0x00; // 初始化P1端口为0
+  30   1          while (1) {
+  31   2              if (SW1 == 0) { // 检查开关是否按下（低电平触发）
+  32   3                  displayConstant();
+  33   3              } else if (SW2 == 0) {
+  34   3                  displaySequence();
+  35   3              } else if (SW3 == 0) {
+  36   3                  displayBlink();
+  37   3              } else if (SW4 == 0) {
+  38   3                  displayRandom();
+  39   3              } else {
+  40   3                  P1 = 0x00; // 如果没有开关按下，关闭所有LED
+  41   3              }
+  42   2          }
+  43   1      }
+  44          
+  45          // 延时函数
+  46          void delay(unsigned int time) {
+  47   1          unsigned int i, j;
+  48   1          for (i = 0; i < time; i++) {
+  49   2              for (j = 0; j < 500; j++);
+  50   2          }
+  51   1      }
+  52          
+  53          // 常亮模式
+  54          void displayConstant() {
+  55   1          P1 = 0xFF; // 所有LED常亮
+C51 COMPILER V9.59.0.0   NEW                                                               09/14/2023 21:14:04 PAGE 2   
+
+  56   1      }
+  57          
+  58          // 依次点亮模式
+  59          void displaySequence() {
+  60   1          unsigned char pattern = 0x01;
+  61   1          int i;
+  62   1          for (i = 0; i < 8; i++) {
+  63   2              P1 = pattern;
+  64   2              delay(500); // 延时500毫秒
+  65   2              pattern <<= 1;
+  66   2          }
+  67   1      }
+  68          
+  69          // 闪烁模式
+  70          void displayBlink() {
+  71   1          P1 = 0xFF; // 所有LED亮
+  72   1          delay(500); // 延时500毫秒
+  73   1          P1 = 0x00; // 所有LED灭
+  74   1          delay(500); // 延时500毫秒
+  75   1      }
+  76          
+  77          // 随机模式
+  78          void displayRandom() {
+  79   1          unsigned char pattern = 0;
+  80   1          int i;
+  81   1          for (i = 0; i < 8; i++) {
+  82   2              pattern |= (rand() % 2) << i; // 随机生成0或1，并设置对应LED
+  83   2          }
+  84   1          P1 = pattern;
+  85   1          delay(500); // 延时500毫秒
+  86   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    183    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
