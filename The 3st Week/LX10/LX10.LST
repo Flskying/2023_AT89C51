@@ -1,0 +1,48 @@
+C51 COMPILER V9.59.0.0   LX10                                                              09/18/2023 19:09:50 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LX10
+OBJECT MODULE PLACED IN LX10.OBJ
+COMPILER INVOKED BY: D:\Èí¼þ\DEVELOP\danpianji\keil\C51\BIN\C51.EXE LX10.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          #define uchar unsigned char
+   4          #define unit unsigned int
+   5          uchar code dis_code[]={0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0xc0};
+   6          void delay()
+   7          {
+   8   1              uchar i,j;
+   9   1              for(i=0;i<255;i++)
+  10   1                      for(j=0;j<255;j++);
+  11   1      }
+  12          void main()
+  13          {
+  14   1              uchar i,j=0x7f;
+  15   1              while(1)
+  16   1              {
+  17   2                      for(i=0;i<8;i++)
+  18   2                      {
+  19   3                              j=_crol_(j,1);
+  20   3                              P0=dis_code[i];
+  21   3                              P2=j;
+  22   3                              delay();
+  23   3                      }
+  24   2              }
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

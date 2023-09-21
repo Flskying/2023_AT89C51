@@ -1,0 +1,134 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/18/2023  19:09:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\Èí¼þ\DEVELOP\DANPIANJI\KEIL\C51\BIN\BL51.EXE STARTUP.obj, LX10.obj TO LX10
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  LX10.obj (LX10)
+
+
+LINK MAP OF MODULE:  LX10 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0029H     UNIT         ?PR?MAIN?LX10
+            CODE    002CH     001FH     UNIT         ?PR?DELAY?LX10
+            CODE    004BH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0057H     000BH     UNIT         ?CO?LX10
+
+
+
+OVERLAY MAP OF MODULE:   LX10 (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LX10
+
+?PR?MAIN?LX10
+  +--> ?CO?LX10
+  +--> ?PR?DELAY?LX10
+
+
+
+SYMBOL TABLE OF MODULE:  LX10 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:004BH         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/18/2023  19:09:50  PAGE 2
+
+
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:004EH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:004BH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:004BH         LINE#         133
+  C:004DH         LINE#         134
+  C:004EH         LINE#         135
+  C:004FH         LINE#         136
+  C:0051H         LINE#         185
+  C:0054H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        LX10
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:002CH         PUBLIC        delay
+  C:0003H         PUBLIC        main
+  C:0057H         PUBLIC        dis_code
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:002CH         LINE#         6
+  C:002CH         LINE#         7
+  C:002CH         LINE#         9
+  C:0038H         LINE#         10
+  C:004AH         LINE#         11
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0005H         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         12
+  C:0003H         LINE#         13
+  C:0003H         LINE#         14
+  C:0005H         LINE#         15
+  C:0005H         LINE#         16
+  C:0005H         LINE#         17
+  C:0011H         LINE#         18
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/18/2023  19:09:50  PAGE 3
+
+
+  C:0011H         LINE#         19
+  C:001DH         LINE#         20
+  C:0024H         LINE#         21
+  C:0026H         LINE#         22
+  C:0029H         LINE#         23
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LX10
+
+Program Size: data=9.0 xdata=0 code=98
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
