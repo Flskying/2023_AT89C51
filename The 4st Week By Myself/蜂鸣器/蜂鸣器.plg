@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\Code\µ¥Æ¬»ú\·äÃùÆ÷\·äÃùÆ÷.uvproj
+Project File Date:  09/19/2023
+
+<h2>Output:</h2>
+Build target 'Ä¿±ê 1'
+assembling STARTUP.A51...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ?C_START
+    MODULE:  STARTUP.obj (?C_STARTUP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ?C_START
+    MODULE:  STARTUP.obj (?C_STARTUP)
+    ADDRESS: 000DH
+Program Size: data=9.0 xdata=0 code=15
+creating hex file from "·äÃùÆ÷"...
+"·äÃùÆ÷" - 0 Error(s), 2 Warning(s).
+Build target 'Ä¿±ê 1'
+assembling STARTUP.A51...
+compiling ·äÃùÆ÷.c...
+linking...
+Program Size: data=9.0 xdata=0 code=58
+creating hex file from "·äÃùÆ÷"...
+"·äÃùÆ÷" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,171 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/19/2023  09:48:42  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\软件\DEVELOP\DANPIANJI\KEIL\C51\BIN\BL51.EXE STARTUP.obj, 动态数码管.obj TO 动态数码管
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  动态数码管.obj (__________)
+  D:\软件\DEVELOP\DANPIANJI\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  动态数码管 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?__________
+            DATA    0012H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0013H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     006CH     UNIT         ?PR?_NIXIE?__________
+            CODE    00FBH     0024H     UNIT         ?PR?MAIN?__________
+            CODE    011FH     001FH     UNIT         ?PR?DELAY?__________
+            CODE    013EH     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   动态数码管 (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?__________
+  +--> ?C_INITSEG
+
+?PR?MAIN?__________            0012H    0001H
+  +--> ?PR?_NIXIE?__________
+  +--> ?PR?DELAY?__________
+
+?PR?_NIXIE?__________          -----    -----
+  +--> ?PR?DELAY?__________
+
+
+
+SYMBOL TABLE OF MODULE:  动态数码管 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/19/2023  09:48:42  PAGE 2
+
+
+
+  -------         MODULE        ?C_STARTUP
+  C:0003H         SEGMENT       ?C_C51STARTUP
+  I:0013H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0006H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0003H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0003H         LINE#         133
+  C:0005H         LINE#         134
+  C:0006H         LINE#         135
+  C:0007H         LINE#         136
+  C:0009H         LINE#         185
+  C:000CH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        __________
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:0008H         PUBLIC        number
+  D:00A8H         PUBLIC        IE
+  C:011FH         PUBLIC        delay
+  D:00B8H         PUBLIC        IP
+  C:008FH         PUBLIC        _nixie
+  C:00FBH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00A0H.2       PUBLIC        p22
+  B:00A0H.3       PUBLIC        p23
+  B:00A0H.4       PUBLIC        p24
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/19/2023  09:48:42  PAGE 3
+
+
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:011FH         LINE#         15
+  C:011FH         LINE#         16
+  C:011FH         LINE#         18
+  C:012BH         LINE#         19
+  C:013DH         LINE#         20
+  -------         ENDPROC       DELAY
+  -------         PROC          _NIXIE
+  D:0006H         SYMBOL        location
+  D:0004H         SYMBOL        num
+  C:008FH         LINE#         23
+  C:008FH         LINE#         24
+  C:008FH         LINE#         25
+  C:00BFH         LINE#         26
+  C:00BFH         LINE#         27
+  C:00C3H         LINE#         28
+  C:00CBH         LINE#         29
+  C:00CFH         LINE#         30
+  C:00D7H         LINE#         31
+  C:00DBH         LINE#         32
+  C:00E3H         LINE#         33
+  C:00E7H         LINE#         34
+  C:00EDH         LINE#         35
+  C:00EDH         LINE#         36
+  C:00F4H         LINE#         38
+  C:00F7H         LINE#         39
+  C:00FAH         LINE#         40
+  -------         ENDPROC       _NIXIE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0003H         SYMBOL        i
+  D:0012H         SYMBOL        j
+  -------         ENDDO         
+  C:00FBH         LINE#         43
+  C:00FBH         LINE#         44
+  C:00FBH         LINE#         46
+  C:00FBH         LINE#         47
+  C:00FBH         LINE#         48
+  C:0109H         LINE#         49
+  C:011AH         LINE#         50
+  C:011DH         LINE#         51
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        __________
+
+Program Size: data=20.0 xdata=0 code=331
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

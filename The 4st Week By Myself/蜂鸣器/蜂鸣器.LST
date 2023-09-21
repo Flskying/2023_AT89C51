@@ -1,0 +1,75 @@
+C51 COMPILER V9.59.0.0   ______                                                            09/19/2023 10:39:44 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE ______
+OBJECT MODULE PLACED IN 蜂鸣器.OBJ
+COMPILER INVOKED BY: D:\软件\DEVELOP\danpianji\keil\C51\BIN\C51.EXE 蜂鸣器.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /**************************************************************************************
+   2          深圳市普中科技有限公司（PRECHIN 普中）
+   3          技术支持：www.prechin.net
+   4          PRECHIN
+   5           普中
+   6          
+   7          实验名称：蜂鸣器实验
+   8          接线说明：      
+   9          实验现象：下载程序后蜂鸣器发出声音，一段时间后关闭
+  10          注意事项：                                                                                                                                                                
+  11          ***************************************************************************************/
+  12          #include "reg52.h"
+  13          
+  14          typedef unsigned int u16;       //对系统默认数据类型进行重定义
+  15          typedef unsigned char u8;
+  16          
+  17          sbit BEEP=P2^5; //将P2.5管脚定义为BEEP
+  18          
+  19          /*******************************************************************************
+  20          * 函 数 名       : delay_10us
+  21          * 函数功能               : 延时函数，ten_us=1时，大约延时10us
+  22          * 输    入       : ten_us
+  23          * 输    出       : 无
+  24          *******************************************************************************/
+  25          void delay_10us(u16 ten_us)
+  26          {
+  27   1              while(ten_us--);        
+  28   1      }
+  29          
+  30          /*******************************************************************************
+  31          * 函 数 名       : main
+  32          * 函数功能               : 主函数
+  33          * 输    入       : 无
+  34          * 输    出       : 无
+  35          *******************************************************************************/
+  36          void main()
+  37          {       
+  38   1              u16 i=2000;
+  39   1      
+  40   1              while(1)
+  41   1              {
+  42   2                      while(i--)//循环2000次
+  43   2                      {
+  44   3                              BEEP=!BEEP;//产生一定频率的脉冲信号
+  45   3                              delay_10us(100);
+  46   3                      }
+  47   2                      i=0;//清零
+  48   2                      BEEP=0;//关闭蜂鸣器
+  49   2              }               
+  50   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.59.0.0   ______                                                            09/19/2023 10:39:44 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

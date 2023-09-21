@@ -1,0 +1,24 @@
+C51 COMPILER V9.59.0.0   __________                                                        09/19/2023 09:48:42 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE __________
+OBJECT MODULE PLACED IN ¶¯Ì¬ÊýÂë¹Ü.OBJ
+COMPILER INVOKED BY: D:\Èí¼þ\DEVELOP\danpianji\keil\C51\BIN\C51.EXE ¶¯Ì¬ÊýÂë¹Ü.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+*** WARNING C280 IN LINE 45 OF ¶¯Ì¬ÊÂë¹Ü.c: 'j': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    175    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
