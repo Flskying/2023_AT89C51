@@ -1,0 +1,214 @@
+C51 COMPILER V9.59.0.0   LX11                                                              09/28/2023 18:00:12 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LX11
+OBJECT MODULE PLACED IN LX11.OBJ
+COMPILER INVOKED BY: D:\软件\DEVELOP\danpianji\keil\C51\BIN\C51.EXE LX11.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define uint unsigned int
+   3          #define uchar unsigned char
+   4          #include <intrins.h>
+   5          //定义P1关口的四个引脚，控制开关
+   6          sbit p10=P1^0;
+   7          sbit p11=P1^1;
+   8          sbit p12=P1^2;
+   9          sbit p13=P1^3;
+  10          
+  11          //开关一数组：显示i
+  12          uchar xsl1[]={0x1e,0x0c,0x0c,0x0c,0x0c,0x0c,0x1e,0x00};
+  13          
+  14          //开关二数组：显示L O V E 和爱心
+  15          uchar xsl2_1[]={0x0f,0x06,0x06,0x06,0x46,0x66,0x7f,0x00};
+  16          uchar xsl2_2[]={0x1c,0x36,0x63,0x63,0x63,0x36,0x1c,0x00};
+  17          uchar xsl2_3[]={0x66,0x66,0x66,0x66,0x66,0x3c,0x18,0x00};
+  18          uchar xsl2_4[]={0x7f,0x46,0x16,0x1e,0x16,0x46,0x7f,0x00};
+  19          uchar xsl2_5[]={0x66,0xff,0xff,0xff,0x7e,0x3c,0x18,0x00};
+  20          
+  21          //开关三数组
+  22          uchar xsl3_1[]={0x66,0x66,0x66,0x3c,0x18,0x18,0x3c,0x00};
+  23          uchar xsl3_2[]={0x1c,0x36,0x63,0x63,0x63,0x36,0x1c,0x00};
+  24          uchar xsl3_3[]={0x66,0x66,0x66,0x66,0x66,0x66,0x7e,0x00};
+  25          
+  26          void delay()
+  27          {
+  28   1      //延时
+  29   1              uint i,j=1;
+  30   1              for(i=0;i<10;i++)
+  31   1                      for(j=0;j<10;j++) ;
+  32   1      }
+  33          
+  34          void main()
+  35          {
+  36   1      uint i;
+  37   1      uchar j,k=1,count;
+  38   1      while(1)
+  39   1      {
+  40   2                 //开关一，控制数组显示字母I
+  41   2                      j=0xfe;
+  42   2                      for(i=0;i<8&&p10==0x00;i++)
+  43   2                      {
+  44   3                              P0=j;
+  45   3                              P2=xsl1[i];
+  46   3                              j=_crol_(j,1);
+  47   3                              P2=0x00;
+  48   3                      }
+  49   2                      //开关一结束
+  50   2      
+  51   2                      //开关二有love和爱心共五个数组，所以设置k为1-5，循环5次，轮流显示
+  52   2                      for(k=1;k<6&&p11==0x00;k++)
+  53   2                      {
+  54   3                              //欲使每个数组的图案显示一段时间
+  55   3                              for(count=0;count<120&&p11==0x00;count++)
+C51 COMPILER V9.59.0.0   LX11                                                              09/28/2023 18:00:12 PAGE 2   
+
+  56   3                              {
+  57   4                              //行数控制
+  58   4                              for(i=0;i<8;i++)
+  59   4                              {
+  60   5                                      P0=j;
+  61   5                                      switch(k)
+  62   5                                      {
+  63   6                                              case 1:P2=xsl2_1[i];
+  64   6                                                              break;
+  65   6                                              case 2:P2=xsl2_2[i];
+  66   6                                                         break;
+  67   6                                              case 3: P2=xsl2_3[i];
+  68   6                                                        break;
+  69   6                                              case 4:P2=xsl2_4[i];
+  70   6                                                        break;
+  71   6                                              case 5:P2=xsl2_5[i];
+  72   6                                              delay();
+  73   6                                              delay();
+  74   6                                              break;
+  75   6                                      }                               
+  76   5                                      //行移位
+  77   5                                      j=_crol_(j,1);
+  78   5                                      delay();
+  79   5                                      P2=0x00;
+  80   5                                      P0=0xff;
+  81   5                              }
+  82   4                              count++;
+  83   4                              //清影
+  84   4                              P2=0x00; 
+  85   4                              P0=0xff;
+  86   4                              }
+  87   3                              //清影
+  88   3                              P2=0x00;
+  89   3                              P0=0xff;
+  90   3                              }
+  91   2                       //开关二结束
+  92   2      
+  93   2      
+  94   2                      //开关三有YOU三个数组，所以设置k为1-3，循环3次，轮流显示
+  95   2                      for(k=1;k<4&&p12==0x00;k++)
+  96   2                      {
+  97   3                              //欲使每个数组的图案显示一段时间
+  98   3                              for(count=0;count<120&&p12==0x00;count++)
+  99   3                              {
+ 100   4                              //行数控制
+ 101   4                              for(i=0;i<8;i++)
+ 102   4                              {
+ 103   5                                      P0=j;
+ 104   5                                      switch(k)
+ 105   5                                      {
+ 106   6                                              case 1:P2=xsl3_1[i];
+ 107   6                                                              break;
+ 108   6                                              case 2:P2=xsl3_2[i];
+ 109   6                                                         break;
+ 110   6                                              case 3: P2=xsl3_3[i];
+ 111   6                                                        break;
+ 112   6                                      }
+ 113   5                                      //行移位
+ 114   5                                      j=_crol_(j,1);
+ 115   5                                      delay();
+ 116   5                                      P2=0x00;
+ 117   5                                      P0=0xff;
+C51 COMPILER V9.59.0.0   LX11                                                              09/28/2023 18:00:12 PAGE 3   
+
+ 118   5                              }
+ 119   4                              count++;
+ 120   4                              //清影
+ 121   4                              P2=0x00; 
+ 122   4                              P0=0xff;
+ 123   4                              }
+ 124   3                              //清影
+ 125   3                              P2=0x00;
+ 126   3                              P0=0xff;
+ 127   3                              }
+ 128   2                       //开关三结束
+ 129   2      
+ 130   2                       //开关四控制显示I LOVE YOU 爱心 共九个数组，所以设置k为1-9，循环8次，轮流显示
+ 131   2                      for(k=1;k<10&&p13==0x00;k++)
+ 132   2                      {
+ 133   3                              //欲使每个数组的图案显示一段时间
+ 134   3                              for(count=0;count<120&&p13==0x00;count++)
+ 135   3                              {
+ 136   4                              //行数控制
+ 137   4                              for(i=0;i<8;i++)
+ 138   4                              {
+ 139   5                                      P0=j;
+ 140   5                                      switch(k)
+ 141   5                                      {
+ 142   6                                              case 1:P2=xsl1[i];
+ 143   6                                                      delay();
+ 144   6                                                      break;
+ 145   6                                              case 2:P2=xsl2_1[i];
+ 146   6                                                      break;
+ 147   6                                              case 3: P2=xsl2_2[i];
+ 148   6                                                      break;
+ 149   6                                              case 4:P2=xsl2_3[i];
+ 150   6                                                      break;
+ 151   6                                              case 5:P2=xsl2_4[i];
+ 152   6                                              delay();
+ 153   6                                                      break;
+ 154   6                                              case 6:P2=xsl3_1[i];
+ 155   6                                              break;
+ 156   6                                              case 7:P2=xsl3_2[i];
+ 157   6                                                      break;
+ 158   6                                              case 8:P2=xsl3_3[i];
+ 159   6                                              delay();
+ 160   6                                                      break;
+ 161   6                                              case 9:P2=xsl2_5[i];
+ 162   6                                                 delay();
+ 163   6                                                 delay();
+ 164   6                                                      break;
+ 165   6                                      }
+ 166   5                                      
+ 167   5                                      //行移位
+ 168   5                                      j=_crol_(j,1);
+ 169   5                                      delay();
+ 170   5                                      P2=0x00;
+ 171   5                                      P0=0xff;
+ 172   5                              }
+ 173   4                              count++;
+ 174   4                              //清影
+ 175   4                              P2=0x00; 
+ 176   4                              P0=0xff;
+ 177   4                              }
+ 178   3                              //清影
+ 179   3                              P2=0x00;
+C51 COMPILER V9.59.0.0   LX11                                                              09/28/2023 18:00:12 PAGE 4   
+
+ 180   3                              P0=0xff;
+ 181   3                              }
+ 182   2                       //开关四结束
+ 183   2      
+ 184   2      }
+ 185   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    549    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     72       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
