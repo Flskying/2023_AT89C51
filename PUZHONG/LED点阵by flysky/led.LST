@@ -1,0 +1,233 @@
+C51 COMPILER V9.59.0.0   LED                                                               09/28/2023 18:02:58 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LED
+OBJECT MODULE PLACED IN led.OBJ
+COMPILER INVOKED BY: D:\软件\DEVELOP\danpianji\keil\C51\BIN\C51.EXE led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          #include "reg51.h"
+   3          #include <intrins.h>
+   4          
+   5          typedef unsigned int uint;      //对系统默认数据类型进行重定义
+   6          typedef unsigned char uchar;
+   7          
+   8          //定义74HC595控制管脚
+   9          sbit SRCLK=P3^6;        //移位寄存器时钟输入
+  10          sbit RCLK=P3^5;         //存储寄存器时钟输入
+  11          sbit SER=P3^4;          //串行数据输入
+  12          
+  13          //定义P3关口的四个引脚，控制开关
+  14          sbit p30=P3^1;
+  15          sbit p31=P3^0;
+  16          sbit p32=P3^2;
+  17          sbit p33=P3^3;
+  18          
+  19          //行数组
+  20          uchar row[]={0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
+  21          
+  22          //开关一数组：显示i
+  23          uchar xsl1[]={0x87,0xcf,0xcf,0xcf,0xcf,0xcf,0x87,0xff};
+  24          
+  25          //开关二数组：显示L O V E 和爱心
+  26          uchar xsl2_1[]={0x0f,0x9f,0x9f,0x9f,0x9d,0x99,0x01,0xff};
+  27          uchar xsl2_2[]={0xc7,0x93,0x39,0x39,0x39,0x93,0xc7,0xff};
+  28          uchar xsl2_3[]={0x99,0x99,0x99,0x99,0x99,0xc3,0xe7,0xff};
+  29          uchar xsl2_4[]={0x01,0x9d,0x97,0x87,0x97,0x9d,0x01,0xff};
+  30          uchar xsl2_5[]={0x99,0x00,0x00,0x00,0x81,0xc3,0xe7,0xff};
+  31          
+  32          //开关三数组
+  33          uchar xsl3_1[]={0x99,0x99,0x99,0xc3,0xe7,0xe7,0xc3,0xff};
+  34          uchar xsl3_2[]={0xc7,0x93,0x39,0x39,0x39,0x93,0xc7,0xff};
+  35          uchar xsl3_3[]={0x99,0x99,0x99,0x99,0x99,0x99,0x81,0xff};
+  36          
+  37          
+  38          //#define LEDDZ_COL_PORT        P0      //点阵列控制端口
+  39          
+  40          
+  41          /*******************************************************************************
+  42          * 函 数 名       : delay_10us
+  43          * 函数功能               : 延时函数，ten_us=1时，大约延时10us
+  44          * 输    入       : ten_us
+  45          * 输    出       : 无
+  46          *******************************************************************************/
+  47          void delay_10us(uint ten_us)
+  48          {
+  49   1              while(ten_us--);        
+  50   1      }
+  51          
+  52          /*******************************************************************************
+  53          * 函 数 名         : hc595_write_data(u8 dat)
+  54          * 函数功能                 : 向74HC595写入一个字节的数据
+  55          * 输    入         : dat：数据
+C51 COMPILER V9.59.0.0   LED                                                               09/28/2023 18:02:58 PAGE 2   
+
+  56          * 输    出         : 无
+  57          *******************************************************************************/
+  58          void hc595_write_data(uchar dat)
+  59          {
+  60   1              uchar i=0;
+  61   1              
+  62   1              for(i=0;i<8;i++)//循环8次即可将一个字节写入寄存器中
+  63   1              {
+  64   2                      SER=dat>>7;//优先传输一个字节中的高位
+  65   2                      dat<<=1;//将低位移动到高位
+  66   2                      SRCLK=0;
+  67   2                      delay_10us(1);
+  68   2                      SRCLK=1;
+  69   2                      delay_10us(1);//移位寄存器时钟上升沿将端口数据送入寄存器中      
+  70   2              }
+  71   1              RCLK=1;
+  72   1              delay_10us(1);
+  73   1              RCLK=0;//存储寄存器时钟上升沿将前面写入到寄存器的数据输出       
+  74   1      }
+  75          
+  76          
+  77          /*******************************************************************************
+  78          * 函 数 名       : main
+  79          * 函数功能               : 主函数
+  80          * 输    入       : 无
+  81          * 输    出       : 无
+  82          *******************************************************************************/
+  83          void main()
+  84          {       
+  85   1      uint i;
+  86   1      uchar j,k=1,count;
+  87   1      while(1)
+  88   1      {          P0=0xff;
+  89   2                 //开关一，控制数组显示字母I
+  90   2                      j=0x80;
+  91   2                      for(i=0;i<8&&p30==0x00;i++)
+  92   2                      {                       
+  93   3                              hc595_write_data(row[i]);
+  94   3                              P0=xsl1[i];
+  95   3                              delay_10us(100);
+  96   3                              P0=0xff;
+  97   3                      }
+  98   2                      //开关一结束
+  99   2      
+ 100   2                      //开关二有love和爱心共五个数组，所以设置k为1-5，循环5次，轮流显示
+ 101   2                      for(k=1;k<6&&p31==0x00;k++)
+ 102   2                      {
+ 103   3                              //欲使每个数组的图案显示一段时间
+ 104   3                              for(count=0;count<120&&p31==0x00;count++)
+ 105   3                              {
+ 106   4                      //行数控制
+ 107   4                              for(i=0;i<8;i++)
+ 108   4                              {
+ 109   5                                      hc595_write_data(row[i]);
+ 110   5                                      switch(k)
+ 111   5                                      {
+ 112   6                                              case 1:P0=xsl2_1[i];
+ 113   6                                                              break;
+ 114   6                                              case 2:P0=xsl2_2[i];
+ 115   6                                                         break;
+ 116   6                                              case 3: P0=xsl2_3[i];
+ 117   6                                                        break;
+C51 COMPILER V9.59.0.0   LED                                                               09/28/2023 18:02:58 PAGE 3   
+
+ 118   6                                              case 4:P0=xsl2_4[i];
+ 119   6                                                        break;
+ 120   6                                              case 5:P0=xsl2_5[i];
+ 121   6                                                      break;
+ 122   6                                      }
+ 123   5                              delay_10us(100);
+ 124   5                              P0=0xff;
+ 125   5                              }
+ 126   4                              count++;
+ 127   4                              }
+ 128   3                              }
+ 129   2                       //开关二结束
+ 130   2      
+ 131   2      
+ 132   2                      //开关三有YOU三个数组，所以设置k为1-3，循环3次，轮流显示
+ 133   2                      for(k=1;k<4&&p32==0x00;k++)
+ 134   2                      {
+ 135   3                              //欲使每个数组的图案显示一段时间
+ 136   3                              for(count=0;count<120&&p32==0x00;count++)
+ 137   3                              {
+ 138   4                              //行数控制
+ 139   4                              for(i=0;i<8;i++)
+ 140   4                              {
+ 141   5                                      hc595_write_data(row[i]);
+ 142   5                                      switch(k)
+ 143   5                                      {
+ 144   6                                              case 1:P0=xsl3_1[i];
+ 145   6                                                              break;
+ 146   6                                              case 2:P0=xsl3_2[i];
+ 147   6                                                         break;
+ 148   6                                              case 3:P0=xsl3_3[i];
+ 149   6                                                        break;
+ 150   6                                      }
+ 151   5                              delay_10us(100);
+ 152   5                              P0=0xff;
+ 153   5                              }
+ 154   4                              count++;
+ 155   4                              }
+ 156   3                              }
+ 157   2                       //开关三结束
+ 158   2      
+ 159   2                       //开关四控制显示I LOVE YOU 爱心 共九个数组，所以设置k为1-9，循环8次，轮流显示
+ 160   2                      for(k=1;k<10&&p33==0x00;k++)
+ 161   2                      {
+ 162   3                              //欲使每个数组的图案显示一段时间
+ 163   3                              for(count=0;count<120&&p33==0x00;count++)
+ 164   3                              {
+ 165   4                              //行数控制
+ 166   4                              for(i=0;i<8;i++)
+ 167   4                              {
+ 168   5                                      hc595_write_data(row[i]);
+ 169   5                                      switch(k)
+ 170   5                                      {
+ 171   6                                              case 1:P0=xsl1[i];
+ 172   6                                                      break;
+ 173   6                                              case 2:P0=xsl2_1[i];
+ 174   6                                                      break;
+ 175   6                                              case 3: P0=xsl2_2[i];
+ 176   6                                                      break;
+ 177   6                                              case 4:P0=xsl2_3[i];
+ 178   6                                                      break;
+ 179   6                                              case 5:P0=xsl2_4[i];
+C51 COMPILER V9.59.0.0   LED                                                               09/28/2023 18:02:58 PAGE 4   
+
+ 180   6                                              break;
+ 181   6                                              case 6:P0=xsl3_1[i];
+ 182   6                                              break;
+ 183   6                                              case 7:P0=xsl3_2[i];
+ 184   6                                                      break;
+ 185   6                                              case 8:P0=xsl3_3[i];
+ 186   6                                                      break;
+ 187   6                                              case 9:P0=xsl2_5[i];
+ 188   6                                                      break;
+ 189   6                                      }
+ 190   5                                      delay_10us(100);
+ 191   5                              
+ 192   5                              }
+ 193   4                              count++;
+ 194   4                              }
+ 195   3                              }
+ 196   2                       //开关四结束
+ 197   2       P0=0xff;
+ 198   2      }
+ 199   1              
+ 200   1              
+ 201   1              
+ 202   1              
+ 203   1                              
+ 204   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    507    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     80       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
