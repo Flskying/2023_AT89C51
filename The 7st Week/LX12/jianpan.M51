@@ -1,0 +1,178 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/11/2023  21:29:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\DEVELOP\KEIL\C51\BIN\BL51.EXE STARTUP.obj, jianpan.obj TO jianpan
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  jianpan.obj (JIANPAN)
+  D:\DEVELOP\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  jianpan (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000DH     UNIT         ?DT?JIANPAN
+            IDATA   0015H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0064H     UNIT         ?PR?MAIN?JIANPAN
+            CODE    00F3H     0055H     UNIT         ?PR?DOWN?JIANPAN
+            CODE    0148H     001FH     UNIT         ?PR?DELAY10?JIANPAN
+            CODE    0167H     0010H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   jianpan (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?JIANPAN
+  +--> ?C_INITSEG
+
+?PR?MAIN?JIANPAN
+  +--> ?PR?DOWN?JIANPAN
+
+?PR?DOWN?JIANPAN
+  +--> ?PR?DELAY10?JIANPAN
+
+
+
+SYMBOL TABLE OF MODULE:  jianpan (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/11/2023  21:29:50  PAGE 2
+
+
+  C:0003H         SEGMENT       ?C_C51STARTUP
+  I:0015H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0006H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0003H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0003H         LINE#         133
+  C:0005H         LINE#         134
+  C:0006H         LINE#         135
+  C:0007H         LINE#         136
+  C:0009H         LINE#         185
+  C:000CH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        JIANPAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:0008H         PUBLIC        keyval
+  C:008FH         PUBLIC        main
+  C:00F3H         PUBLIC        down
+  D:0009H         PUBLIC        a
+  D:0013H         PUBLIC        k
+  C:0148H         PUBLIC        delay10
+  -------         PROC          DELAY10
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:0148H         LINE#         7
+  C:0148H         LINE#         8
+  C:0148H         LINE#         10
+  C:0154H         LINE#         11
+  C:0166H         LINE#         13
+  -------         ENDPROC       DELAY10
+  -------         PROC          DOWN
+  C:00F3H         LINE#         15
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/11/2023  21:29:50  PAGE 3
+
+
+  C:00F3H         LINE#         16
+  C:00F3H         LINE#         17
+  C:00F6H         LINE#         18
+  C:00FDH         LINE#         19
+  C:00FDH         LINE#         20
+  C:0100H         LINE#         21
+  C:0112H         LINE#         22
+  C:0112H         LINE#         23
+  C:0117H         LINE#         24
+  C:011CH         LINE#         25
+  C:0121H         LINE#         26
+  C:0124H         LINE#         27
+  C:0124H         LINE#         28
+  C:0127H         LINE#         29
+  C:0138H         LINE#         30
+  C:0138H         LINE#         31
+  C:0139H         LINE#         32
+  C:013DH         LINE#         33
+  C:0141H         LINE#         34
+  C:0147H         LINE#         35
+  C:0147H         LINE#         36
+  C:0147H         LINE#         37
+  -------         ENDPROC       DOWN
+  -------         PROC          MAIN
+  C:008FH         LINE#         38
+  C:008FH         LINE#         39
+  C:008FH         LINE#         40
+  C:008FH         LINE#         41
+  C:008FH         LINE#         42
+  C:0092H         LINE#         43
+  C:00A5H         LINE#         44
+  C:00A5H         LINE#         45
+  C:00A8H         LINE#         46
+  C:00B0H         LINE#         47
+  C:00B2H         LINE#         49
+  C:00B2H         LINE#         50
+  C:00C2H         LINE#         51
+  C:00C2H         LINE#         52
+  C:00C8H         LINE#         53
+  C:00C8H         LINE#         54
+  C:00CBH         LINE#         55
+  C:00D3H         LINE#         56
+  C:00D3H         LINE#         57
+  C:00D5H         LINE#         59
+  C:00D5H         LINE#         60
+  C:00D8H         LINE#         61
+  C:00E6H         LINE#         62
+  C:00E9H         LINE#         63
+  C:00E9H         LINE#         64
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        JIANPAN
+
+Program Size: data=22.0 xdata=0 code=375
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,92 @@
+C51 COMPILER V9.59.0.0   JIANPAN                                                           10/11/2023 21:29:50 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE JIANPAN
+OBJECT MODULE PLACED IN jianpan.OBJ
+COMPILER INVOKED BY: D:\Develop\keil\C51\BIN\C51.EXE jianpan.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define uchar unsigned char
+   3          #define uint unsigned int
+   4          uchar keyval=0;          //定义一个键值 判断按钮
+   5          uchar a[10]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};           //0-9十个共阳数组
+   6          uint k;   //定义k用于动态刷新两个数码管
+   7          void delay10()    //十毫秒延时
+   8          {
+   9   1              uchar i,j;
+  10   1              for(i=0;i<100;i++)
+  11   1                      for(j=0;j<100;j++)
+  12   1                      ;
+  13   1      }
+  14          
+  15          void down()        //判断按下按键的键值
+  16          {
+  17   1              P1=0x0f;
+  18   1              if(P1!=0x0f)
+  19   1                      {
+  20   2                              delay10();
+  21   2                              switch(P1)         //判断列
+  22   2                              {
+  23   3                                 case (0x0e) : keyval=0; break;
+  24   3                                 case (0x0d) : keyval=1; break;
+  25   3                                 case (0x0b) : keyval=2; break;
+  26   3                                 case (0x07) : keyval=3; break;
+  27   3                              }
+  28   2                              P1=0xf0;                //根据行判断按键
+  29   2                              switch(P1)
+  30   2                              {
+  31   3                                 case (0xe0) : keyval=keyval;break;
+  32   3                                 case (0xd0) : keyval=keyval+4;break;
+  33   3                                 case (0xb0) : keyval=keyval+8;break;
+  34   3                                 case (0x70) : keyval=keyval+12;break;
+  35   3                              }               
+  36   2                      }
+  37   1      }
+  38          void main()
+  39          {
+  40   1              while(1)
+  41   1              {       
+  42   2                      down();  //获取按键键值
+  43   2                      if(keyval<10&&keyval>=0)         //一位数字 只运行一个数码管
+  44   2                      {
+  45   3                              P2=0xfe;
+  46   3                              P0=a[keyval] ;    
+  47   3                      }
+  48   2                      else                                            //两位数字
+  49   2                      {
+  50   3                              for(k=0;k<2;k++)          //动态刷新两个数码管
+  51   3                              {
+  52   4                                      if(k==0)
+  53   4                                      {
+  54   5                                      P2=0xfd;
+  55   5                                      P0=a[keyval/10];
+C51 COMPILER V9.59.0.0   JIANPAN                                                           10/11/2023 21:29:50 PAGE 2   
+
+  56   5                                      P0=0xff;
+  57   5                                      }
+  58   4                                      else 
+  59   4                                      {
+  60   5                                      P2=0xfe;
+  61   5                                      P0=a[keyval%10];
+  62   5                                      P0=0xff;
+  63   5                                      }
+  64   4                              }
+  65   3                      }
+  66   2              }
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    216    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     13    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
