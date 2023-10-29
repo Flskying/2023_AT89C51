@@ -1,0 +1,38 @@
+C51 COMPILER V9.59.0.0   LX13                                                              10/28/2023 19:26:01 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE LX13
+OBJECT MODULE PLACED IN LX13.OBJ
+COMPILER INVOKED BY: D:\Develop\keil\C51\BIN\C51.EXE LX13.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "LCD.h"
+   2          
+   3          void main(void)//Ö÷º¯Êý
+   4          {
+   5   1              lcd_initial();
+   6   1              while(1)
+   7   1              {
+   8   2                      string(0x8f,"Happy New Year");
+   9   2                      delay(100);
+  10   2                      string(0xd9,"Welcome to HIT");
+  11   2                      delay(500);
+  12   2                      write_command(0x01);
+  13   2                      delay(100);
+  14   2              }
+  15   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     53    ----
+   CONSTANT SIZE    =     30    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
