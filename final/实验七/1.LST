@@ -1,0 +1,118 @@
+C51 COMPILER V9.00   1                                                                     12/12/2023 10:17:36 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE 1
+OBJECT MODULE PLACED IN 1.OBJ
+COMPILER INVOKED BY: D:\study\keil\C51\BIN\C51.EXE 1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //甲机
+   2          #include<reg51.h>
+   3          unsigned char j=10;
+   4          char sign=1;
+   5          sbit P10=P1^0;
+   6          sbit P11=P1^1;
+   7          sbit P12=P1^2;
+   8          void delay(unsigned char k){
+   9   1              unsigned char i,j,h;
+  10   1              for(h=0;h<k;h++){
+  11   2                      for(i=0;i<25;i++){
+  12   3                              for(j=0;j<20;j++);
+  13   3                      }
+  14   2              }
+  15   1      }
+  16          void twoDigitDisplay(unsigned char num,unsigned char time,unsigned char portNumber){
+  17   1              unsigned char box[] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0xf82,0xf8,0x80,0x90};
+  18   1              unsigned char k;
+  19   1              if(portNumber==0){
+  20   2                      if(num<0||num>99||time<0){
+  21   3                              for(k=0;k<40;k++){
+  22   4                                      P2=0x00;
+  23   4                              }       
+  24   3                      }else{          
+  25   3                              for(k=0;k<time;k++){
+  26   4                                      unsigned char numR = num%10;
+  27   4                                      unsigned char numL = num/10;
+  28   4                                      P2=0x11;
+  29   4                                      P0=box[numL];
+  30   4                                      delay(12);
+  31   4                                      P2=0x22;
+  32   4                                      P0=box[numR];
+  33   4                                      delay(12);
+  34   4                              }
+  35   3                      }
+  36   2              }       
+  37   1      }
+  38          void main(){
+  39   1              unsigned char sum=0;
+  40   1              TR0=1;
+  41   1              EA=1;
+  42   1              ET0=1;
+  43   1              TMOD=0x21;
+  44   1              TH0=0xee;
+  45   1              TL0=0x00;
+  46   1              
+  47   1              while(1){
+  48   2                      if(sign==1){
+  49   3                              //执行数据发送
+  50   3                              TR1=1;
+  51   3                              TMOD=0x20;
+  52   3                              TL1=0xfd;
+  53   3                              TH1=0xfd;
+  54   3                              SCON=0x40;
+  55   3                              PCON=0x00;
+C51 COMPILER V9.00   1                                                                     12/12/2023 10:17:36 PAGE 2   
+
+  56   3                      }
+  57   2                      while(sign==1){
+  58   3                              //发送数据SBUF
+  59   3                              if(P10==0){SBUF=0xfe;while(TI==0);TI=0;continue;}                               
+  60   3                              if(P11==0){SBUF=0xfd;while(TI==0);TI=0;continue;}                               
+  61   3                              if(P12==0){SBUF=0xfc;while(TI==0);TI=0;continue;}                               
+  62   3                              SBUF=0xff;
+  63   3                      }
+  64   2                      if(sign==-1){
+  65   3                              //执行数据接收
+  66   3                              TR1=1;
+  67   3                              TL1=0xfd;
+  68   3                              TH1=0xfd;
+  69   3                              SCON=0x50;
+  70   3                              PCON=0x00;
+  71   3                      }
+  72   2                      while(sign==-1){
+  73   3                              //接收数据SBUF
+  74   3                              if(SBUF==0xf0){
+  75   4                                      sum++;
+  76   4                                      twoDigitDisplay(sum,5,0);
+  77   4                              }
+  78   3                              if(SBUF==0x0f){
+  79   4                                      twoDigitDisplay(sum,5,0);
+  80   4                              }
+  81   3                      }
+  82   2              }
+  83   1      }
+  84          void int0() interrupt 1 {
+  85   1              j--;
+  86   1              if(j==0){
+  87   2                      TF0=0;
+  88   2                      TH0=0xee;
+  89   2                      TL0=0x00;
+  90   2                      sign=sign*(-1);                 
+  91   2                      j=10;                                   
+  92   2              }       
+  93   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    354    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2      17
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

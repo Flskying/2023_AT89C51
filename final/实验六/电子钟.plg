@@ -1,0 +1,20 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\study\´ÞÑÅÐÀ4202150101104\ÊµÑé\ÊµÑéÁù\µç×ÓÖÓ.uvproj
+Project File Date:  05/07/2022
+
+<h2>Output:</h2>
+compiling µç×ÓÖÓ.c...
+µç×ÓÖÓ.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_CLOCK_WRITE?µç×Ó_Ó
+    CALLER1: ?PR?XUISHI?µç×Ó_Ó
+    CALLER2: ?C_C51STARTUP
+Program Size: data=22.0 xdata=0 code=701
+creating hex file from "µç×ÓÖÓ"...
+"µç×ÓÖÓ" - 0 Error(s), 1 Warning(s).

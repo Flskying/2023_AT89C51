@@ -1,0 +1,133 @@
+C51 COMPILER V9.00   ÊµÑé_Ë                                                                12/12/2023 10:24:06 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE ÊµÑé_Ë
+OBJECT MODULE PLACED IN ÊµÑé°Ë.OBJ
+COMPILER INVOKED BY: D:\study\keil\C51\BIN\C51.EXE ÊµÑé°Ë.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg51.h"
+   2          #include "intrins.h"
+   3          #define uchar unsigned char
+   4          #define uint unsigned int
+   5          #define out P0
+   6          sbit smgl=out^4;
+   7          sbit smg2=out^5;
+   8          sbit DQ=P3^7;
+   9          void delay5(uchar);
+  10          void init_ds18b20(void);
+  11          uchar readbyte(void);
+  12          void writebyte(uchar);
+  13          uchar retemp(void);
+  14          
+  15          void main(void)
+  16          { 
+  17   1              uchar i,temp;
+  18   1              delay5(1000);
+  19   1              while(1)
+  20   1              {
+  21   2                      temp=retemp();
+  22   2                      for(i=0;i<10;i++) //Á¬ÐøÉ¨ÃèLED ÊýÂë¹Ü10´Î
+  23   2                      {
+  24   3                              out=(temp/10)&0x0f;
+  25   3                              smgl=0;
+  26   3                              smg2=1;
+  27   3                              delay5(1000);
+  28   3                              out=(temp%10)&0x0f;
+  29   3                              smgl=1;
+  30   3                              smg2=0;
+  31   3                              delay5(1000);
+  32   3                      }
+  33   2              }
+  34   1      } 
+  35          
+  36          void delay5(uchar n) //ÑÓÊ± Sus º¯Êý
+  37          {
+  38   1              do
+  39   1              {
+  40   2                      _nop_();
+  41   2                      _nop_();
+  42   2                      _nop_();
+  43   2                      n--;
+  44   2              }
+  45   1              while(n);
+  46   1      }
+  47          
+  48          void init_ds18b20(void) //DS18B20 ³õÊ¼»¯º¯Êý
+  49          {
+  50   1              uchar x=0;
+  51   1              DQ=0;
+  52   1              delay5(120);
+  53   1              DQ=1;
+  54   1              delay5(16);
+  55   1              delay5(80);
+C51 COMPILER V9.00   ÊµÑé_Ë                                                                12/12/2023 10:24:06 PAGE 2   
+
+  56   1      }
+  57          
+  58          uchar readbyte(void) //º¯Êý¹¦ÄÜ£º¶ÁÈ¡1×Ö½ÚÊý¾Ý
+  59          {
+  60   1              uchar i=0;
+  61   1              uchar date=0;
+  62   1              for(i=8;i>0;i--)
+  63   1              {
+  64   2                      DQ=0;
+  65   2                      delay5(1);
+  66   2                      DQ=1; //15¦ÌsÄÚÊÍ·Å×ÜÏß
+  67   2                      date>>=1;
+  68   2                      if(DQ)
+  69   2                      date|=0x80;
+  70   2                      delay5(11);
+  71   2              }
+  72   1              return(date);
+  73   1      }
+  74          
+  75          void writebyte(uchar dat) //Ð´1×Ö½Úº¯Êý
+  76          {
+  77   1      uchar i=0;
+  78   1      for(i=8;i>0;i--)
+  79   1      {
+  80   2              DQ=0;
+  81   2              DQ=dat&0x01;
+  82   2              delay5(12);
+  83   2              DQ=1;
+  84   2              dat>>=1;
+  85   2              delay5(5);
+  86   2      }
+  87   1      }
+  88          
+  89          uchar retemp(void) //¶ÁÈ¡ÎÂ¶Èº¯Êý
+  90          {
+  91   1              uchar a,b,tt;
+  92   1              uint t;
+  93   1              init_ds18b20();
+  94   1              writebyte(0xcc);
+  95   1              writebyte(0x44);
+  96   1              init_ds18b20();
+  97   1              writebyte(0xcc);
+  98   1              writebyte(0xbe);
+  99   1              a=readbyte();
+ 100   1              b=readbyte();
+ 101   1              t=b;
+ 102   1              t<<=8;
+ 103   1              t=t|a;
+ 104   1              tt=t*0.0625;
+ 105   1              return(tt);
+ 106   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    214    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.00   ÊµÑé_Ë                                                                12/12/2023 10:24:06 PAGE 3   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

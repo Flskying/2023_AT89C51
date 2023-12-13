@@ -1,0 +1,80 @@
+C51 COMPILER V9.00   2                                                                     12/12/2023 10:17:26 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE 2
+OBJECT MODULE PLACED IN 2.OBJ
+COMPILER INVOKED BY: D:\study\keil\C51\BIN\C51.EXE 2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //乙机
+   2          #include<reg51.h>
+   3          unsigned char j=10;
+   4          char sign=1;
+   5          sbit P10=P1^0;
+   6          void main(){
+   7   1              unsigned char increment=0;
+   8   1              TR0=1;
+   9   1              EA=1;
+  10   1              ET0=1;
+  11   1              TMOD=0x21;
+  12   1              TH0=0xee;
+  13   1              TL0=0x00;
+  14   1              if(sign==1){
+  15   2                      //执行数据接收
+  16   2                      TR1=1;
+  17   2                      TL1=0xfd;
+  18   2                      TH1=0xfd;
+  19   2                      TMOD=0x20;
+  20   2                      SCON=0x50;
+  21   2                      PCON=0x00;
+  22   2              }
+  23   1              while(sign==1){
+  24   2                      //接收数据SBUF
+  25   2                      P2=SBUF;
+  26   2              }
+  27   1              if(sign==-1){
+  28   2                      //执行数据发送
+  29   2                      TR1=1;
+  30   2                      TL1=0xfd;
+  31   2                      TH1=0xfd;
+  32   2                      SCON=0x40;
+  33   2                      PCON=0x00;
+  34   2              }
+  35   1              while(sign==-1){
+  36   2                      //发送数据SBUF
+  37   2                      if(P10==0){
+  38   3                              SBUF=0xf0;
+  39   3                              while(TI==0);TI=0;
+  40   3                      }else{
+  41   3                              SBUF=0x0f;
+  42   3                              while(TI==0);TI=0;
+  43   3                      }
+  44   2              }
+  45   1      }
+  46          void int0() interrupt 1 {
+  47   1              j--;
+  48   1              if(j==0){
+  49   2                      TF0=0;
+  50   2                      TH0=0xee;
+  51   2                      TL0=0x00;
+  52   2                      sign=sign*(-1);                 
+  53   2                      j=10;                                   
+  54   2              }       
+  55   1      }
+C51 COMPILER V9.00   2                                                                     12/12/2023 10:17:26 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    163    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
